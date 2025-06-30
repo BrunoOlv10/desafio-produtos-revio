@@ -1,4 +1,4 @@
-from utils.formatters import formatar_preco
+from utils.formatters import formatar_preco, formatar_nota
 
 class Produto:
     def __init__(self, nome: str, valor: float, nota: float, estrelas: str, img: str, marca: str = "", tipo: str = "",):
@@ -13,9 +13,8 @@ class Produto:
     def to_dict(self):
         return {
             "nome": self.nome,
-            "valor": self.valor,
-            "valor_formatado": formatar_preco(self.valor),
-            "nota": self.nota,
+            "valor": formatar_preco(self.valor),
+            "nota": formatar_nota(self.nota),
             "estrelas": self.estrelas,
             "img": self.img,
             "marca": self.marca,

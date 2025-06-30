@@ -16,7 +16,7 @@ def montar_dados_exportacao(produtos: list[Produto]) -> list[dict]:
     } for p in produtos]
 
 def montar_nome_arquivo(prefixo: str = "produtos") -> str:
-    return f"{prefixo} {datetime.now().strftime('%d-%m-%y-%H-%M')}"
+    return f"{prefixo} {datetime.now().strftime('%d-%m-%y-%H-%M-%S')}"
 
 def exportar_dados_arquivo(produtos: list[Produto], tipo: str) -> StreamingResponse:
     output = BytesIO()

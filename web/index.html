@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Mercado</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="container">
+            <h1>Análise de Mercado</h1>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <div class="content-layout">
+                <aside class="sidebar">
+                    <div class="filter-section">
+                        <h3>Filtrar por</h3>
+
+                        <div class="filter-group">
+                            <h4>Preço</h4>
+                            <div class="price-ranges">
+                                <label><input type="checkbox">Até R$ 1.000</label>
+                                <label><input type="checkbox">R$ 1.000 - R$ 2.000</label>
+                                <label><input type="checkbox">R$ 2.000 - R$ 3.000</label>
+                                <label><input type="checkbox">R$ 3.000 - R$ 4.000</label>
+                                <label><input type="checkbox">R$ 4.000 - R$ 5.000</label>
+                                <label><input type="checkbox">Acima de R$ 5.000</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Marca</h4>
+                            <div class="brand-filters">
+                                <label><input type="checkbox">Brastemp</label>
+                                <label><input type="checkbox">Consul</label>
+                                <label><input type="checkbox">Samsung</label>
+                                <label><input type="checkbox">Electrolux</label>
+                                <label><input type="checkbox">LG</label>
+                                <label><input type="checkbox">Panasonic</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Tipo</h4>
+                            <div class="type-filters">
+                                <label><input type="checkbox">Inverse</label>
+                                <label><input type="checkbox">Frost Free</label>
+                                <label><input type="checkbox">Side by Side</label>
+                                <label><input type="checkbox">French Door</label>
+                                <label><input type="checkbox">Econavi</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Nota</h4>
+                            <div class="grade-filters">
+                                <label><input type="checkbox" value="0-1"><span class="stars">★☆☆☆☆</span></label>
+                                <label><input type="checkbox" value="1-2"><span class="stars">★☆☆☆☆ - ★★☆☆☆</span></label>
+                                <label><input type="checkbox" value="2-3"><span class="stars">★★☆☆☆ - ★★★☆☆</span></label>
+                                <label><input type="checkbox" value="3-4"><span class="stars">★★★☆☆ - ★★★★☆</span></label>
+                                <label><input type="checkbox" value="4-5"><span class="stars">★★★★☆ - ★★★★★</span></label>
+                                <label><input type="checkbox" value="5-5"><span class="stars">★★★★★</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="products-section">
+                    <div class="results-header">
+                        <div class="results-info">
+                            <h1>Resultados</h1>
+                            <span class="results-count"></span>
+                        </div>
+                        <div class="sort-export">
+                            <div class="export-buttons">
+                                <button id="export-excel" class="export-btn" disabled>Exportar Excel</button>
+                                <button id="export-csv" class="export-btn" disabled>Exportar CSV</button>
+                            </div>
+                            <div class="sort-options">
+                                <select>
+                                    <option value="avaliacao-maior">Melhor avaliação</option>
+                                    <option value="valor-menor">Menor preço</option>
+                                    <option value="valor-maior">Maior preço</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="products-container"></div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

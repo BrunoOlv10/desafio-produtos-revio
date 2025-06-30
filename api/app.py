@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional, Literal
 
 from model.product import Produto
@@ -7,6 +8,13 @@ from utils.filters_sort import aplicar_filtros, ordenar_produtos
 from utils.exporter import exportar_dados_arquivo
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:5500"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 produtos_cache: list[Produto] = listar_produtos()
 

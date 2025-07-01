@@ -12,6 +12,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://revio-desafio-produtos.vercel.app"],
+    # allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -41,16 +42,17 @@ def listar_produtos_e_commerce(
 @app.get("/exportar_dados")
 def exportar_dados(
     tipo_export: Literal["csv", "excel"],
+    data_hora: str,
     marca: Optional[str] = None,
     tipo: Optional[str] = None,
     valor_min: Optional[float] = None,
     valor_max: Optional[float] = None,
     nota_min: Optional[float] = None,
     nota_max: Optional[float] = None,
-    sort: Optional[str] = None
+    sort: Optional[str] = None,
 ):
     produtos = aplicar_filtros(produtos_cache, marca, tipo, valor_min, valor_max, nota_min, nota_max)
     
     produtos = ordenar_produtos(produtos, sort)
 
-    return exportar_dados_arquivo(produtos, tipo_export)
+    return exportar_dados_arquivo(produtos, tipo_export, data_hora)

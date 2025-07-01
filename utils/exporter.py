@@ -15,14 +15,20 @@ def montar_dados_exportacao(produtos: list[Produto]) -> list[dict]:
         "nota": formatar_nota(p.nota)
     } for p in produtos]
 
-def montar_nome_arquivo(prefixo: str = "produtos") -> str:
-    return f"{prefixo} {datetime.now().strftime('%d-%m-%y-%H-%M-%S')}"
+def montar_nome_arquivo(prefixo: str = "produtos", data: str = None) -> str:
+    if data is None:
+        return prefixo
+    
+    data_string = datetime.strptime(data, "%d/%m/%Y, %H:%M:%S")
+    data_formatada = data_string.strftime('%d-%m-%y-%H-%M-%S')
 
-def exportar_dados_arquivo(produtos: list[Produto], tipo: str) -> StreamingResponse:
+    return f"{prefixo} {data_formatada}"
+
+def exportar_dados_arquivo(produtos: list[Produto], tipo: str, data: str = None) -> StreamingResponse:
     output = BytesIO()
     dados = montar_dados_exportacao(produtos)
     df = pd.DataFrame(dados)
-    nome_arquivo = montar_nome_arquivo()
+    nome_arquivo = montar_nome_arquivo(data=data)
 
     if tipo == "csv":
         df.to_csv(output, index=False, sep=";", encoding="utf-8")

@@ -122,6 +122,9 @@ function exportarDados(tipo) {
     const params = new URLSearchParams(query.slice(query.indexOf('?')))
     params.set('tipo_export', tipo)
 
+    const dataHora = new Date().toLocaleString('pt-BR') 
+    params.set('data_hora', dataHora)
+
     const url = `${API_BASE}/exportar_dados?${params.toString()}`
 
     window.open(url)
